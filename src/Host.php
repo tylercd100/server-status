@@ -7,11 +7,29 @@ use GuzzleHttp\Client;
 
 class Host 
 {
+    /**
+     * @var string
+     */
     protected $host;
+
+    /**
+     * @var Ping
+     */    
     protected $pinger;
-    protected $ping = 0;
+
+    /**
+     * @var double
+     */    
+    protected $ping = 0.0;
+
+    /**
+     * @var integer
+     */    
     protected $statusCode = 0;
 
+    /**
+     * @param string $host The host URL or IP to check
+     */
     public function __construct($host)
     {
         $this->host = $host;
@@ -20,7 +38,8 @@ class Host
 
     /**
      * Checks the ping of the host
-     * @return [type] [description]
+     * 
+     * @return double|false
      */
     public function ping(){
         $this->ping = $this->pinger->ping();
@@ -29,7 +48,8 @@ class Host
 
     /**
      * Checks the status of the host
-     * @return [type] [description]
+     * 
+     * @return integer
      */
     public function status(){
         $client = new Client();
