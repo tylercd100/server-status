@@ -32,8 +32,9 @@ class Host
      */
     public function __construct($host)
     {
-        $this->host = $host;
-        $this->pinger = new Ping($host);
+        $this->host      = $host;
+        $this->pinger    = new Ping($host);
+        $this->requester = new Client();
     }
 
     /**
@@ -52,9 +53,8 @@ class Host
      * @return integer
      */
     public function status(){
-        $client = new Client();
-        $res = $client->request('GET', $this->host);
-        $this->statusCode = $res->getStatusCode();
+        $response = $this->requester->request('GET', $this->host);
+        $this->statusCode = $response->getStatusCode();
         return $this->getStatusCode();
     }
 
@@ -66,6 +66,16 @@ class Host
     public function setPinger(Ping $pinger)
     {
         $this->pinger = $pinger;
+    }
+
+    /**
+     * Sets the value of requester.
+     *
+     * @return void
+     */
+    public function setRequester(Client $requester)
+    {
+        $this->requester = $requester;
     }
 
     /**

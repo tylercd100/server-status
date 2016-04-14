@@ -2,8 +2,10 @@
 
 namespace Tylercd100\ServerStatus\Tests;
 
+use GuzzleHttp\Client;
 use JJG\Ping;
 use Tylercd100\ServerStatus\Host;
+use GuzzleHttp\Psr7\Response;
 
 class HostTest extends TestCase
 {
@@ -27,6 +29,28 @@ class HostTest extends TestCase
         $ping = $obj->ping();
         
         $this->assertEquals($value,$ping);
+    }
+
+    public function testRequesterReturnsNumber(){
+        $host = "127.0.0.1";
+        $value = 200;
+        $mock = $this->getMock(Client::class, ['request']);
+        $responseMock = $this->getMock(Response::class, ['getStatusCode']);
+        
+        $mock->expects($this->once())
+             ->method('request')
+             ->willReturn($responseMock);
+
+        $responseMock->expects($this->once())
+             ->method('getStatusCode')
+             ->willReturn($value);
+
+        $obj = new Host($host);
+        $obj->setRequester($mock);
+
+        $code = $obj->status();
+        
+        $this->assertEquals($value,$code);
     }
 
     public function testGetHost(){
