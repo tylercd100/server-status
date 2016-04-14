@@ -38,6 +38,15 @@ class Host
         return $this->getStatusCode();
     }
 
+    /**
+     * Sets the value of pinger.
+     *
+     * @return void
+     */
+    public function setPinger(Ping $pinger)
+    {
+        $this->pinger = $pinger;
+    }
 
     /**
      * Gets the value of host.
