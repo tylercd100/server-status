@@ -9,8 +9,8 @@ class Host
 {
     protected $host;
     protected $pinger;
-    protected $ping;
-    protected $statusCode;
+    protected $ping = 0;
+    protected $statusCode = 0;
 
     public function __construct($host)
     {
@@ -47,44 +47,6 @@ class Host
     public function getHost()
     {
         return $this->host;
-    }
-
-    /**
-     * Sets the value of host.
-     *
-     * @param mixed $host the host
-     *
-     * @return self
-     */
-    protected function setHost($host)
-    {
-        $this->host = $host;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of pinger.
-     *
-     * @return mixed
-     */
-    public function getPinger()
-    {
-        return $this->pinger;
-    }
-
-    /**
-     * Sets the value of pinger.
-     *
-     * @param mixed $pinger the pinger
-     *
-     * @return self
-     */
-    protected function setPinger(Ping $pinger)
-    {
-        $this->pinger = $pinger;
-
-        return $this;
     }
 
     /**
