@@ -23,6 +23,9 @@ use Tylercd100\ServerStatus\Host;
 
 $host = new Host("google.com"); // or an IP address; 127.0.0.1
 
-echo "Host ping: " . $host->ping() . "\n"; // 30.0
-echo "Host status code: " . $host->status() . "\n"; // 200
+echo "Host ping: " . $host->ping() . "\n";
+echo "Host status code: " . $host->status() . "\n";
+
+# Host ping: 30.0
+# Host status code: 200
 ```
