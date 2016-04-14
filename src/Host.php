@@ -18,6 +18,11 @@ class Host
     protected $pinger;
 
     /**
+     * @var Client
+     */    
+    protected $requester;
+
+    /**
      * @var double
      */    
     protected $ping = 0.0;
