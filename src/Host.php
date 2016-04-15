@@ -71,7 +71,9 @@ class Host
      * @return integer
      */
     public function status(){
-        $response = $this->requester->request('GET', $this->host);
+        $response = $this->requester->request('GET', $this->host, [
+            'connect_timeout' => 5
+        ]);
         $this->statusCode = $response->getStatusCode();
         return $this->getStatusCode();
     }
