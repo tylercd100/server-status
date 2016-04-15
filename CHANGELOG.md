@@ -2,6 +2,9 @@
 
 All notable changes to `server-status` will be documented in this file.
 
+### 1.0.4
+- Added another timeout
+
 ### 1.0.3
 - Added a timeout
 
