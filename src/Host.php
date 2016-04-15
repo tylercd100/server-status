@@ -37,9 +37,21 @@ class Host
      */
     public function __construct($host)
     {
-        $this->host      = $host;
+        $this->host      = $this->strip($host);
         $this->pinger    = new Ping($host);
         $this->requester = new Client();
+    }
+
+    /**
+     * Strips off the https and http
+     * @param  string $host The URL to strip
+     * @return string
+     */
+    protected function strip($host)
+    {
+        $host = str_replace("https://","",$host);
+        $host = str_replace("http://", "",$host);
+        return $host;
     }
 
     /**
@@ -47,7 +59,8 @@ class Host
      * 
      * @return double|false
      */
-    public function ping(){
+    public function ping()
+    {
         $this->ping = $this->pinger->ping();
         return $this->getPing();
     }
