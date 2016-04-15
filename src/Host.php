@@ -38,7 +38,7 @@ class Host
     public function __construct($host)
     {
         $this->host      = $this->strip($host);
-        $this->pinger    = new Ping($host);
+        $this->pinger    = new Ping($this->host);
         $this->requester = new Client();
     }
 
