@@ -68,9 +68,10 @@ class Host
     /**
      * Checks the status of the host
      * 
+     * @param  integer $timeout The timeout of the request
      * @return integer
      */
-    public function status(){
+    public function status($timeout = 5){
         $response = $this->requester->request('GET', $this->host, [
             'connect_timeout' => 5,
             'timeout' => 5
